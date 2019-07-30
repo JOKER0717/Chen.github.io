@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //字符串的解构赋值：字符串被转化成了一个类似数组的对象
+        const [a,b,c,d,e]='hello';
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(d);
+        console.log(e);
+        //length属性也可以解构赋值
+        let{length:len}='hello';
+        console.log(len)
+        //函数add的参数表面上是一个数组，但在传入参数的那一刻，数组参数就被解构成x和y
+        //对于函数内部的代码来说，它们能感受到的参数就是x和y
+        function add([x,y]){
+            return x+y;
+        }
+       console.log( add([1,2]))
+
+       function move({x=0,y=0} = {}){
+        return [x,y];                                                                                                                                                            
+       }
+     console.log(move({x:3,y:8})) ;// 3,8
+    console.log(move({x:3})) ;  //3,0
+    console.log(move({})); //0,0
+    console.log(move())  //0,0
+    </script>
+</body>
+</html>

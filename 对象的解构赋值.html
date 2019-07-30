@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+          // 解构赋值：es6允许按照一定模式，从数组和对象中提取值对变量进行赋值，这被称为解构赋值
+          // const props={
+          //     className='tiger-button',
+          //     loading:false,
+          //     clicked:true,
+          //     disabled:'disabled',
+          // }
+
+      //    es5:
+      //    var  loading=props.loading;
+      //    var  clicked=props.clicked;
+
+      //    es6:
+          const{loading,clicked}=props;
+             //给一个默认值
+          const{loading=false,clicked}=props;
+          //   对象的解构赋值
+
+          // 规律：对象根据属性名称一一对应，
+          var {foo,bar}={foo:"222",bar:'555'};
+          console.log(bar)
+          //如果变量名与属性名不一致必须写成
+          var {foo:baz，bar}={foo:"222",bar:'555'};
+          // 证明了对象的解构赋值是下面的简写形式
+          var {foo：foo，bar：bar}={foo:"222",bar:'555'};
+          var {foo,bar}={foo:"222",bar:'555'};
+          //对象的解构赋值的内部机制，是先找到同名属性，然后再给对应的变量，
+          // 真正赋值的是后者，而不是前者，
+          // 我们管后面的叫变量，前面的叫模式
+          var {foo:baz}={foo:"222",bar:'555'};
+          // 真正被赋值的是变量 baz 而不是模式foo
+    </script>
+  </body>
+</html>

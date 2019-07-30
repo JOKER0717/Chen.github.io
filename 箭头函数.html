@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        箭头函数：Arrow Function
+        为什么叫Arrow Function?
+        因为他的定义就是一个箭头来表示一个函数
+
+        2.和普通函数的区别
+        ①更简洁的代码语法
+        ②不绑定this
+        3.语法
+        将原函数的‘function’关键字和函数名称都去掉，并且使用‘=>’将函数体和参数列表连接起来
+        */
+        //es5
+        // var fn1=function(a,b){
+            // return a+b;
+        // }
+        // function fn2(a,b){
+            // return a+b;                                                                                                  
+
+        // }
+        //es6
+        // (a,b) => a+b;
+        /*
+        写法规则：
+        1.当函数只有一个参数的时候，括号是可选的，可以写可以不写
+           var fn2=function(a){
+            return a;
+        }
+        var fn2=a => a;
+        2.如果函数没有参数时，括号不可以省略，必须写
+      
+        var fn1=function(){
+
+        }
+        var fn1 = () =>{
+
+        }
+        3.如果多个参数，必须要写小括号，并且用逗号分隔
+        var fn3=function(a,b){
+
+        }
+        var fn3=(a,b)=>{}
+
+        4.只有一个参数，一个表达式,可以省大括号和小括号
+        function(x){
+            return x*x;
+        }
+        (x) => x*x ;或者 x=>x*x
+
+        5.如果包含多条语句的话，不能省略大括号和return
+        x =>{
+            if(x>0){
+                return x*x;
+            }else{
+                return -x*x;
+            }
+        }
+       */
+       //三元运算符
+       //es5:
+    //    a> 5? 1 : 0;
+       //es6:
+    //    var simple = a => a>15? 15: a;
+    //    simple(16);
+
+    //    function simple(a){
+    //     if(a>15){
+    //         return 15;
+    //     }else{
+    //         return a;
+    //     }
+    //    }
+    //    simple(16)
+      //作为事件的handler
+     // es5
+    //   document.addEventListener('click',function(ev){
+    //     console.log(ev)
+    //   })
+      //es6
+      document.addEventListener('click',ev =>
+          console.log(ev)
+      )
+      //求和
+    //   var add=(a,b) =>{
+    //       if(typeof(a)===number && typeof(b)===number){
+    //           return a+b;
+    //       }else{
+    //           return 0;
+    //       }
+    //   }
+
+      //如果要返回一个对象，需要注意，return后面返回的对象必须加上括号，不写括号会报错，因为和函数整体的大括号有语法冲突
+    //   var getHash=arr=>{
+    //       return{
+    //           name:'lily',
+    //           age:"23"
+    //       }
+    //   }
+    // //   console.log(getHash())
+      //返回值是对象 为了以示区分，用小括号
+    //   let show=name =>({'username':name})
+      //用了return 关键字 需要用花括号
+    //   let show=name =>{return{'user':name}}
+        //箭头函数和普通函数一样，也可以使用剩余参数和默认参数
+        var fun=(x=1,y=3) => x+y;
+        console.log(fun())
+        var fun2=(x,...argus)=>{
+            console.log(...argus)
+        }
+        fun2(1,2,3)
+
+        //不绑定this：箭头函数的this其实就是定义的时候确定的this，
+        // 以后不管怎么调用这个箭头函数，箭头函数this始终为定义时候的this
+        // function Counter(){
+        //     this.num=0;
+        // }
+        // var n=new Counter();
+        // console.log(n.num)
+        //此时新增需求，过一秒将a.num的值加1，可以使用定时器来实现
+        // function  Counter(){
+        //     this.num = 0;
+        //     this.timer = setInterval(() => {
+        //         this.num++;
+        //         console.log(this.num)
+        //     },1000)
+        // }
+        // var b = new Counter();
+        //数组排序 sort
+        var arr=[1,2,5,25,4];
+        //es5
+        // arr.sort(function(a,b){
+        //    return a-b;
+        //    return b-a;    
+        // })
+        // console.log(arr)
+
+        //es6
+        arr.sort((a,b)=>{                                                                                                                                           
+                return a-b;
+                return b-a; 
+        })
+        console.log(arr)
+        /*
+        以下的情况不可以用箭头函数
+        1.箭头函数不能用作构造器和new一起，会报错
+        2.箭头函数没有prototype属性
+        */
+        // function Person=()=>{
+
+        // }
+    </script>
+</body>
+</html>

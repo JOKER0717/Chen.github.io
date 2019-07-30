@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      
+
+        Array.prototype.filter = function(cb){
+            var newArr=[];
+            console.log(this)
+            for(var i=0;i<this.length;i++){
+                if(cb(this[i],i)){
+                    //cb(this[i],i)函数调用，接收一个实参，跟回调函数里面的形参相对应
+                    newArr.push(this[i]);
+                }
+            }
+            return newArr;
+        }
+        // cb:function(item,index){
+        //     return item>2; //判断条件
+        // }
+        let ary=[1,2,3,4];
+        var res = ary.filter(function(item,index){
+            return item>2; //判断条件
+        })
+        console.log(res)
+        //函数调用里面放个函数就是回调函数
+
+
+        //map方法封装
+        // 函数调用时候传参为实参，-
+        // 函数定义的时候用形参来接收
+        Array.prototype.mymap=function(fn){
+            let aRR=[];
+            for(var i=0;i<this.length;i++){
+                aRR.push(fn(this[i],i))
+            }   
+            return aRR;
+        }
+        
+       let arr1=[1,2,3,4];
+        var nA=arr1.mymap(function(item,index){
+            return item+1;
+        })
+        console.log(nA)
+
+        //push方法封装
+        var pushArr = [1,2,3,4];
+		function pushdemo(fn){
+			var newArr =[];
+			for (var i = 1; i < arguments.length; i++) {
+				newArr[newArr.length] = arguments[i];
+            }
+            console.log(newArr.length)
+			console.log(newArr)
+            var leng = newArr.length + pushArr.length;
+            console.log(pushArr.length)
+			for (var j = pushArr.length,a = 0; j < leng; j++,a++){
+				pushArr[j] = newArr[a]                   
+			}
+		} 
+		pushdemo(pushArr,"a","b","c")
+		console.log(pushArr)
+        //push改变原数组
+
+
+        Array.prototype.push=function(){
+            //arguments 实参数组
+            console.log(arguments)
+            for(var i=0;i<arguments.length;i++){
+                this[this.length]=arguments[i];
+            }
+            return this.length;
+        }
+        var  arr2=[1,3,5];
+        var res = arr2.push(2,4,6);
+        console.log(res)
+    </script>
+</body>
+</html>

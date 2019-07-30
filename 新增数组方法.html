@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //  push：数组后面添加元素
+      // unshift:数组最前面添加
+
+      /*
+      es6新增数组方法
+      1.find:用于找出第一个符合条件的数组成员,参数是一个回调函数，
+      // 数组的每一个成员一次执行这个回调函数
+      // 直到找到第一个返回值为true的成员，返回这个成员，如果没有找到，
+      // 返回undefined
+      2.includes(): 返回一个布尔值，用来判断某个数组是否包含给定的值
+      every():有一项条件不成立就返回false，所有项都满足才返回true，
+      返回布尔值
+      some():有一项成立就返回true，返回布尔值
+      map:映射，把一个数组映射成一个新数组，不会改变原来的数组
+      fill():使用一个给定值，填充数组，一般用于数组的初始化，数组的已有元素
+      被全部覆盖
+      from():类似数组的对象和可遍历的对象转为真正的数组
+      from的使用方法：Array.from(类似数组的对象，可选参数，可选参数)
+      类似数组的对象必须要指定一个长度length，返回的是新数组
+      filter：过滤，过滤掉数组中不满足条件的值，返回一个新数组,
+      不改变原数组的值
+      */
+      var a=[1,-4,5].find((n)=>n<0)
+      console.log(a)
+
+      // var arr=[1,5,4,8];
+      // arr.find(function(value,index,arr){
+      //     return value>9
+      // })
+      // value 数组的每一项
+
+      // index 数组的索引
+      // arr  原数组
+          // var  arr1=[1,5,4]
+          // var  arr2=[2,4,6]
+          // console.log( arr1.includes(2))
+          // console.log(arr2.includes(4))
+          console.log([1,5,4].includes(2))
+
+      // includes可以指定位置，放在方法的第二个参数上，默认搜索的起始位置为0，
+      // 如果第二个参数为负数就是从倒数位置开始搜索
+
+      //false
+      console.log( [1,2,3].includes(2,2) )
+      // 从第三个位置找3
+
+
+      //every方法
+      // var arr=[1,2,3,4];
+      // arr.every((item,index,arr)=>{
+      //     return item>1   //false
+      // })
+
+
+      //some方法
+      // [1,2,3,4].some((item,index,arr)=>{
+      //     return item>3  //true
+      // })
+
+
+      //map方法
+          var arr5=[2,5,6,4,9]
+          var newarr=arr5.map((item,index,arr)=>{
+              return item*2;
+          })
+          console.log(newarr)
+          console.log(arr5)
+
+          //fill方法
+
+          var newA=['a','b','c'].fill('x')
+          console.log(newA)
+          // fill还可以指定填充的位置：第二个(开始位置)和第三个参数(不包括结束位置)
+          console.log(['a','b','c'].fill('7',1,2))
+          //from方法
+          var arrayLike={
+              '0':'a',
+              '1':'b',
+              '2':'c',
+              length:3
+          }
+          var realArray=Array.from(arrayLike)
+          console.log(realArray)
+          //过滤方法
+          var arr4=[{
+              num:1,
+              val:'ceshi',
+              flag:'aa'
+          },0
+          {
+              num:2,
+              val:'测试2',
+              flag:'aa'
+          }
+          ]
+         var aa= arr4.filter(item=>item.num==2);
+          console.log(aa)
+          //filter可以过滤掉null，undefined，空字符串(字符串中间不能有空格)
+          var arr3=[null,'1','2',undefined,3,' ',5]
+          console.log(arr3.filter(item=>item))
+
+          //用filter实现数组去重
+          var arr7=[1,2,2,3,4,5,5,6,7,7,8,8]
+          var delArr=arr7.filter((item,index,arr)=>{
+              return arr.indexOf(item) == index;
+          })
+          // indexOf:返回数组中的某一项索引。
+          // var popArr=arr7.filter((item,index,arr)=> {
+          //     return
+          // })
+          console.log(delArr)
+
+              //使用map方法求某个数组的平方和
+              var arr6=[1,2,3,4];
+              num=0;
+              var sumA=arr6.map((item,index,arr6)=>{
+                  return item*item;
+              })
+              for(var i=0;i<sumA.length;i++){
+                  num+=sumA[i];
+              }
+              console.log(num)
+              console.log(sumA)
+    </script>
+  </body>
+</html>

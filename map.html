@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Map</title>
+</head>
+<body>
+<script>
+/*
+map出现的意义：我们的意愿是把一个DOM节点添加到对象({})里面作为键值，但是对象值接收字符串类型的键值，map的出现解决了这个问题，它会把对象转化成字符串
+map的定义：是一种数据结构，数据的存在可以是 键——值
+键不局限于字符串，可以是对象等任意数据类型
+map实例的方法：
+set()：设置键和值
+往map里面设置值的时候添加重复的后面的会覆盖前面的
+get()：获取键所对应的值
+读取的时候读取不存在的值，会返回undefined。
+delete(key)：删除
+has(key)：判断是不是拥有
+clear()清除所有数据
+size：表示数据的总长度
+    遍历方法：
+        keys()：返回键名
+        values()：返回键值
+        entries()：返回键值对
+        forEach()：使用回调函数遍历成员
+*/
+
+var obj = new Object();
+var map = new Map(); // 构造函数实例化
+console.log(map);
+const o = {p:'Hello World'}; // 对象当做一个键
+map.set(o,'content'); // 设置键和值
+console.log(map.get(o)); // 获取键对应的值
+console.log(map);
+//接收一个数组作为参数，数组的成员是一个键值对的数组
+const map1 = new Map([
+['lili','aaa'],
+['age','111']
+]);
+
+const item=[
+['lili','aaa'],
+['age','111']
+]
+var map=new Map();
+map.forEach(([key,value])=>{
+    map.set(key,value)
+})
+
+var map2=new Map([
+['name','joker'],
+['age',36] ,
+['city','上海'] 
+])
+for(let keys of map2){
+    console.log(keys)
+}
+//返回键名
+for(let keys of map2.keys()){
+    console.log(keys)
+}
+//返回键值
+for(let value of map2.values()){
+    console.log(value)
+}
+//返回键值对
+for(let en of map2.entries()){
+    console.log(en)
+}
+//map 数据结构转化成数组结构，使用拓展运算符(...)
+
+function strTo(myMap){
+// var obj=
+}
+const myMap=new Map([
+['name','joker'],
+['age',36] ,
+['city','上海'] 
+])
+</script>
+</body>
+</html>

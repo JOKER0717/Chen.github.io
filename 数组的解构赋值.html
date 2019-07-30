@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 解构赋值：es6允许按照一定模式，从数组和对象中提取对变量进行赋值，
+      // 这被成为解构赋值
+      // 数组的解构赋值规律：数组以序号一一对应，这是一个有序的对应关系
+      // const arr=[1,2,3];
+      // const [a,b,c]=arr;
+      let [foo, [[bar], baz]] = [1, [[2], 3]]
+      console.log(foo) //1
+      console.log(bar) //2
+      console.log(baz) //3
+
+      // foo:1;bar:2;baz:3
+      // let[,,third]=['foo','bar','baz']
+      // // third:baz;
+      let [x, , y] = [1, 2, 3]
+      console.log(x)
+      // console.log(s);
+      console.log(y)
+
+      // x:1;y:3
+      let [head, ...tail] = [1, 2, 3, 4, 5]
+      // heade:1;...tail:[2,3,4]
+      console.log(...tail)
+      // console.log(y)
+    </script>
+  </body>
+</html>

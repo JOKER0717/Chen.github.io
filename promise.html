@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+<body>
+    <script>
+        /*
+        promise:解决异步编程的方式，比传统方式更强大，更合理
+        ajax：前后台交互，一种传统的解决异步的方式
+        */
+        // $.ajax({
+        //     url:,
+        //     data:{},
+        //     success:function(){},
+        //     error:function(){}
+        // })
+
+        // jquery源码
+        // function(url,data,successCb,failCb){
+        //     var xhr=new XMLHttpRequest();
+        //     xhr.open();
+        //     xhr.send();
+        //     xhr.onreadystatechange=function(){
+            
+        //     }
+        // }
+
+        //回调地狱：不利于代码维护，promise解决了回调地狱的问题
+        // send(url,data,function(){
+        //     //想让某个div变红
+        //     send(url,data,function(){
+        //         //让div变宽
+        //         send(url,data,function(){
+        //             //让div有个left值
+        //         })
+        //     })
+        // })
+        /*
+        promise的用法：根据es6的规定，promise是一个构造函数，用来实例化一个promise对象
+        promise函数的参数需要接收一个函数，这个函数叫立即执行器：excutor
+        函数的参数(立即执行器)j接收两个参数，resolve,reject,这两个参数是函数，由js引擎提供，
+        不需要我们自己部署
+            
+            resolve：异步成功的函数，
+            reject：异步失败的函数
+             resolve的作用：将promise的状态从未完成改变成已完成
+                成功(从pending变成resolved)
+             reject的作用：将promise的状态从‘未完成’改变成失败
+                失败(从pending变成rejected)
+                promise有三种状态：pending(进行中)
+                                resolved(成功)
+                                rejected(失败)
+                    状态的特点:要么成功，要么失败，两种状态，是互斥的
+                    例子：支付宝付钱
+
+        */
+        var promise=new Promise((resolve,reject)=>{
+               if('异步成功'){
+                   resolve()
+                   /*
+                    resolve在异步请成功时调用，并将请求成功的结果作为参数传递出去
+                    写法：resolve(值)值可以是任意值
+                   */
+               }else{
+                   reject()
+                //    reject在异步请求失败时调用，并将请求的失败的原因作为reject()函数的参数传递出去
+                // 写法：reject(值) 值可以是任意值
+
+               }
+        }); //实例化一个promise对象
+        console.log(promise)
+        /*
+        PromiseStatus:当前promise的状态
+        PromiseValue：promise的返回值
+
+
+        promise的静态方法：
+        promise.all()
+        */
+    </script>
+</body>
+</html>

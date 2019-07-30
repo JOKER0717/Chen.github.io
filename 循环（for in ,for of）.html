@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环</title>
+</head>
+<body>
+    <script>
+        /*
+        for...in:一般用于遍历对象的属性，也可以用来遍历数组，但是不推荐
+        遍历数组的时候，遍历的是索引
+        遍历对象的时候，获取的是对象的属 性
+        */
+        var arr1=['a','b','c','d'];
+        for(let i in arr1){
+            console.log(i)
+            console.log(arr1[i]);
+        }
+
+        var obj={
+            'name':"lili",
+            'age':13,                                             
+            'city':'北京'
+        }
+        Object.prototype.color={
+            'color':'red'
+        }
+        for( let item in obj){
+            console.log(item)
+            console.log(obj[item])
+        }
+        /*
+        for...of:一般用来遍历数组，Array，Map，Set，arguments ,string
+        遍历的是数组的每一项,不能遍历对象
+        可以使用break,continue,return终止循环
+        */
+        var arr=['apple','orange','mango'];
+        for(let element of arr){
+            console.log(element)
+        }
+        //  var obj1={
+        //     'name':"lili",
+        //     'age':13,
+        //     'city':'北京'
+        // }
+        // for(let item of obj1){
+        //     console.log(item)
+        // }
+        var str='hello';
+        for(let item of str){
+            console.log(item)
+            if(item==='l'){
+              break;
+            }                                                                               
+        }
+
+        var map=new Map([['name','joker'],['age',35]])
+        for(let item of map){
+            console.log(item)
+        }
+        /*
+        forEach:接收一个回调函数
+        forEach(function(currentValue,index,arr){
+        })
+         currentValue:当前循环的值，必选
+            index：当前循环值的索引，可选参数
+            arr:所在数组，可选
+            不能使用break,continue,return这些关键字对循环造成干扰
+        */
+        var  arr=['a','b','c'];
+        arr.forEach((value,index,arr)=>{
+            console.log(value);
+            console.log(index);
+            console.log(arr);
+
+
+        })
+    </script>
+</body>
+</html>

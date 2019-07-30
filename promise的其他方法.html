@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        promise.all:接收一个参数数组，必须等所有promise对象执行完以后才会返回一个结果，并且放在了
+        promise.race:接收一个数组作为参数，谁执行的快就会返回谁
+        */
+        var p1=new Promise((resolve,reject)=>{
+            setInterval(()=>{
+                resolve(1);
+            },1000)
+        })
+
+        var p2=new Promise((resolve,reject)=>{
+            setInterval(()=>{
+                resolve(2);
+            },1500)
+        })
+        var p3=new Promise((resolve,reject)=>{
+            setInterval(()=>{
+                resolve(3);
+            },200)
+        })
+        // console.log(Promise.all([p1,p2,p3]));
+        console.log(Promise.race([p1,p2,p3]))
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>set</title>
+</head>
+<body>
+    <script>
+        /*
+        set 本身是一个构造函数，类似于数组，但成员都是唯一的，不重复使用 Set();
+        可以接收数组作为参数，也可以接收对象作为参数
+        */
+        let s= new Set();
+        [2,3,5,4,5,2,2].forEach((aaa) => s.add(aaa));
+        for(let i of s){
+            console.log(i)  
+        }
+        var  d=new Set([1,3,5,7]);  ///接收参数数组，用来初始化
+        // size 属性，用来描述大小
+        console.log(d.size)
+
+        var x=new Set([1,2,3,4,4,5,5]);
+        console.log([...x]); //可以实现数组去重
+        var str=[...new Set('abdjabd')];
+        console.log(str)
+        console.log( str.join('')) //字符串转数组
+
+//         //NAN
+
+//         var s1= new Set();
+//         var a=NaN; 
+//         var b=NaN;
+//         s1.add(a);
+//         s1.add(b);
+//         console.log(s1);
+        
+//         //set的属性和方法
+//         // Set.prototype.constructor //set
+//         // Set.prototype.size // 大小，实例的成员总数
+
+//         // add(value):结构本身添加成员
+//         // delete(value):删除结构成员，返回布尔值，成功 true 
+            //has(value)
+            //clear(value)
+
+//         var s2 = new Set([1,3,6,7,4]);
+//         s2.add(2);
+//         console.log(s2);
+//         console.log(s2.delete(4)); // true
+//         console.log(s2); // {1, 3, 6, 7, 2}
+//         console.log(s2.has(5)); // false
+//         console.log(s2.clear());
+//         console.log(s2); // 清除全部成员
+
+//         // 数组去重的另一种方法
+//         var newArray = Array.from(new Set([1,3,5,3,8,6,8])); // 把类似数组的对象转化成为新数组
+//         console.log(newArray); // [1, 3, 5, 8, 6]
+
+//         /*
+//         Set实例的方法
+        // keys()：返回键名
+        // values()：返回键值
+        // entries()：返回键值对
+        // forEach()：使用回调函数遍历成员
+//         */
+
+        // var s3 = new Set([1,2,3,4,5]);
+        var s3 = new Set(['apple','orange','pear'])
+        for(let i of s3.keys()){
+        console.log(i);  //apple,orange,pear
+        }
+        
+        for(let val of s3.values()){
+        console.log(val); //apple,orange,pear
+        }
+        for(let ent of s3.entries()){
+        console.log(ent); //['apple','apple','orange','orange','pear','pear']
+        }
+        s3.forEach((value,key) => {
+        console.log(key); //apple,orange,pear
+        console.log(value); //apple,orange,pear
+        })
+
+
+//         //    for in循环
+//             // variable：每个迭代的属性值被分配给该变量。
+//             // iterable：一个具有可枚举属性并且可以迭代的对象。
+//             // for (variable of iterable) {
+//             //     statement
+//             // }
+
+//     // Set(集合)
+//     /*
+//     Set(集合) 对象允许你存储任何类型的唯一值，这些值可以是原始值或对象。 
+//     Set(集合) 对象只是值的集合。 
+//     Set(集合) 元素的迭代基于其插入顺序。 
+//     Set(集合) 中的值只能发生一次。如果您创建一个具有多个相同元素的 Set(集合) ，那么它仍然被认为是单个元素。
+//     */
+// // set-example.js
+//     const iterable = new Set([1, 2, 3, 3, 1]);
+//     for (const value of iterable) {
+//         console.log(value);
+//     }
+
+// // Arrays(数组)
+// // Arrays（数组）就是类列表（list-like）对象。数组原型上有各种方法，允许对其进行操作，比如修改和遍历等操作
+
+// const sttr = ['mini', 'mani', 'mo'];
+// for (const value of sttr) {
+//   console.log(value);
+// } 
+    </script>
+</body>
+</html>

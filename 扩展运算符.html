@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+        /*
+        扩展运算符：把数组或者类数组展开成一系列用逗号隔开的值
+        如果展开的是数组...[1,2,3] = 1,2,3
+        如果是对象展开 {'name':'aaa','age:18,'a':{xxx:000}}
+    */
+    function foo(a,b,c){
+        console.log(a)
+        console.log(b)
+        console.log(c)
+    }
+    let arr=[1,2,3];
+    // foo(arr[0],arr[1],arr[2])
+    foo(...arr)
+
+    //扩展运算符的应用
+    // 数组的深拷贝:在内存中重新生成新的地址，不会受影响；
+    // 浅拷贝：
+    var  arr1=[1,2,3]
+    var  arr2=arr1;
+    var  arr3=[...arr1]
+    console.log([...arr1])
+    console.log(arr1==arr2)
+    console.log(arr1==arr3)
+     
+     //字符串转数组
+     var str ='love';
+     var ary=[...str];
+     console.log(ary);
+
+    var arr4=['a','b'];
+    var arr5=['c','d'];
+    var arr6=['e','f'];
+    var newArr = arr4.concat(arr5,arr6);
+    console.log(newArr);
+    var newAry=[... arr4,...arr5,...arr6];
+    console.log(newAry);
+  </script>
+</body>
+</html>

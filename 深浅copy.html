@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            js的数据类型？
+            基本数据类型： string number boolean null undefined
+            引用数据类型：Object(Array,function ,Date,RegExp);
+            为什么会出现深浅拷贝？
+                根源在于引用数据类型，深浅拷贝仅存在于引用数据类型上
+                和基本数据类型无关
+            什么是堆和栈？
+                对于基本数据类型来说，数据都保存在内存的栈中，以键值对的形式保存
+                对于引用数据类型来说，栈内存中保存的是地址的引用，而实际的值放在了
+                    堆里面
+            什么是深拷贝和浅拷贝？（引用数据类型，和基本数据类型无关）
+                浅拷贝：复制对象的地址，而不是对象本身，新旧对象还是
+                共用一块内存，其中有一方改变 ，另一方会受影响
+                深拷贝： 会创造出来一个一摸一样的对象，新对象和旧对象不贡献一块内存
+                修改新对象不会改变原有对象
+
+         */
+        // 浅拷贝
+         var arr = [1, 2, 3];
+         var arr1 = arr;
+         arr1.push(4);
+         console.log(arr);
+         // 对象深拷贝的方法
+         //方案二： 序列化与反序列化实现深拷贝 JSON.stringify JSON.parse
+        let obj = {"name": "lili", c: {"age": 4}, undefined};
+        let obj2 = JSON.parse(JSON.stringify(obj));
+        obj2.c.age = 18;
+        console.log(obj2);
+        console.log(obj);
+        // 为什么序列化和反序列号可以实现深拷贝
+        // JSON.stringify(obj) 内存里面开辟一个新的地址,在使用反序列化
+        // 转成js对象 这种方式有弊端。 undefined 和 null 是无法拷贝的过去的 
+        // 实现深拷贝的第二种方法，for in 循环 + 递归函数
+        let obj3 = {"name": "lili", c: {"age": 4}, undefined};
+        function deepClone(target) {
+            // 定义一个空的对象盛放拷贝后的数据
+            var newObj = null;
+
+            // 容错处理，由于null类型属于object但是又不能循环操作
+            // 所以要排除掉
+            if(typeof(target) == 'object' && target !=null) {
+                // 判断target的类型 Array(), Object() instanceOf
+                newObj = target instanceof Array? [] : {};
+                // 处理 for in 循环对象属性
+                for(let key in target){
+                    // newObj[key ]= target[key];
+                    newObj[key] = typeof(target[key])? deepClone(target[key]) : target[key];
+                }
+            } else {
+                return newObj = target;
+            }  
+            return newObj;
+        }
+        console.log(deepClone(obj3));
+        // jquery里面也有深拷贝方法 $.extend()
+        // extend（第一个参数，第二个参数，第三个参数（可选）） 
+        // 第一个参数如果是true就是深拷贝，false浅拷贝，必选
+        // 第二个参数 拷贝的对象，必选
+    </script>
+</body>
+</html>

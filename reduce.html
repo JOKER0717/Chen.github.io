@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edscriptge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* reduce:这个方法接受一个函数累加器，数组从左往右依次缩减，最后计算的出一个值
+            prev：上一次累加计算的值或上一次累加计算的返回值 (必须值)
+            next：当前要参与计算的值 (必须值)
+            index：当前值的索引 (可选)
+            array：数组本身 (可选)
+            reduce(()=>{
+
+            },initialValue)
+            initialValue：初始值 
+        */
+        var arr=[1,2,3,4];
+       var res= arr.reduce((prev,next,index,array)=>{
+            //求和
+            return prev + next; //返回值作为下一次prev的值
+            // 第一次：prev：1  next：2  = 3；
+            // 第二次：prev：3  next:3   = 6;
+            // 第三次：prev：6  next：4  = 10；
+        })
+        console.log(res)
+        // prev是可以传参数的，如果给prev传参，那么next第一次是数组第一项
+
+        let carList=[{
+            'name':'apple',
+            'count':2,
+            'price':10
+        },{
+            'name':'mango',
+            'count':3,
+            'price':8
+        },{
+           'name':'orange',
+            'count':4,
+            'price':20 
+        }
+    ]
+
+        var aaa = carList.reduce((prev,next)=>{
+          return prev + next.count*next.price;
+        /*
+        第一次  prev：prev.count*next.price
+                next:next.count*next.price
+        第二次  prev:44
+
+        传参以后：prev 初始值为0 next 为数组第一项后续累加都是数组的下一项
+        // prev是可以传参数的，如果给prev传参，那么next第一次是数组第一项        
+        0 + next:next.count*next.price(数组的第一项) =20;
+        20+ next:next.count*next.price(数组的第二项)=44;
+        44+ next:next.count*next.price(数组的第三项)=124;
+            
+         */
+        },0)
+        console.log(aaa)
+
+        var a1=['name','age'];
+        var a2=['小明',12];
+        // reduce():接收一个函数累加器，（函数里面做一些运算），数组会从左往右依次缩减，
+        // 最终会计算成一个值
+        </script>
+</body>
+</html>
